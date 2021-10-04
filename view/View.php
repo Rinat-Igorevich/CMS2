@@ -2,6 +2,8 @@
 
 namespace App\View;
 
+use App\Exception\ApplicationException;
+
 class View implements Renderable
 {
     /*
@@ -25,7 +27,6 @@ class View implements Renderable
 
     public function render()
     {
-
         extract($this->data);
 
         include $this->getIncludeTemplate($this->view);
@@ -44,6 +45,9 @@ class View implements Renderable
         $file = VIEW_DIR . '/layout/' . str_ireplace('.', DIRECTORY_SEPARATOR, $view) . '.php';
         if (file_exists($file)){
             return $file;
+        } else {
+
+            throw new ApplicationException(sprintf('%s шаблон не найден', $view));
         }
         //$template =
         /*

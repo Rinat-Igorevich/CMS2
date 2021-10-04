@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Exception\NotFoundException;
+
 class Router
 {
 
@@ -18,7 +20,7 @@ class Router
                 return $route->run();
             }
         }
-        return null;
+        throw new NotFoundException;
 
         /*
          * этот метод ищет подходящий маршрут,

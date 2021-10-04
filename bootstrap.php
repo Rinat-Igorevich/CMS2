@@ -71,3 +71,35 @@ spl_autoload_register(function ($class) {
     }
 
 });
+
+spl_autoload_register(function ($class) {
+    //var_dump($class);
+    //префикс пространства имен
+    $prefix = 'App\\Exception\\';
+
+    //Базовый каталог для префикса пространства имен
+    $base_dir = APP_DIR . '/Exception/';
+
+    //использует ли класс префикс пространства имен?
+    $len = strlen($prefix);
+
+    if (strncmp($prefix, $class, $len) !== 0) {
+
+        //нет, переходим к следующему зарегистрированному автоподгрузчику
+        return;
+    }
+
+    //получаем относительное имя класса
+    $relative_class = substr($class, $len);
+
+
+    //создаем имя файла
+    $file = $base_dir . str_replace('\\' , '/', $relative_class) . '.php';
+
+
+    //если файл существует, подключаем его
+    if (file_exists($file)) {
+        require $file;
+    }
+
+});
