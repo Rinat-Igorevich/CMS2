@@ -5,7 +5,7 @@ namespace App;
 class Router
 {
 
-    public array $routes;
+    public array $routes = [];
 
     public function dispatch(string $url, string $method)
     {
@@ -26,15 +26,15 @@ class Router
          */
     }
 
-    private function addRoute(string $method, string $path, array $callback)
+    private function addRoute(string $method, string $path, $callback)
     {
-        $routes[] = new Route($method, $path, $callback);
+        $this->routes[] = new Route($method, $path, $callback);
     }
 
-    public function get(string $path, array $callback)
+    public function get(string $path, $callback)
     {
         $this->addRoute('get', $path, $callback);
-        var_dump($callback);
+
     }
 
     public function post(string $path, array $callback)

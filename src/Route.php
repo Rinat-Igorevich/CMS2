@@ -8,7 +8,7 @@ class Route
 {
     private string $path;
     private string $method;
-    private Closure $callback;
+    private $callback;
 
     /*
      * Этот класс представляет собой экземпляр маршрута.
@@ -21,7 +21,7 @@ class Route
      * @param string $method
      * @param array $callback
      */
-    public function __construct(string $path, string $method, array $callback)
+    public function __construct(string $method, string $path, $callback)
     {
         $this->path = $path;
         $this->method = $method;
@@ -29,15 +29,21 @@ class Route
     }
 
 
-    private function prepareCallback(array $callback): Closure
+    private function prepareCallback($callback)
     {
-        var_dump($callback[0]);
+         if (!($callback instanceof Closure)) {
+             list($class, $method) = explode('@', $callback);
+             $object = new $class;
+             $callback = [$object, $method];
+        }
+
+        return $callback;
         /*
          * это внутренний метод маршрутизатора.
          * Он преобразует параметр $callback в выполняемую функцию,
          * чтобы потом использовать её для выполнения маршрута.
          */
-        return $callback[0]();
+
     }
 
     public function getPath(): string
@@ -58,7 +64,8 @@ class Route
 
     public function run()
     {
-        $this->prepareCallback();
+        echo call_user_func_array($this->callback,[]);
+
         /*
          * этот метод запускает обработчик маршрута и возвращает результат его работы.
          */
