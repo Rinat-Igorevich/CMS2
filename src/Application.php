@@ -29,7 +29,7 @@ class Application
          */
 
         $config = Config::getConfig();
-        var_dump($config->get('db.mysql.host'));
+//        var_dump($config->get('db.mysql.host'));
 
         try {
             $dispatchedRoute = $this->router->dispatch($url, $method);
