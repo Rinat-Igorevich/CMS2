@@ -8,7 +8,13 @@ class Controller
 {
     public function index()
     {
-        return new View('homepage', ['title' => 'Index Page']);
+        return new View('homepage', ['title' => 'Главная страница']);
     }
+
+    public function about()
+    {
+        return new View('about', ['title' => 'О нас']);
+    }
+
 
 }

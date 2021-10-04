@@ -13,10 +13,10 @@ $router = new Router();
 //$router->get('/', function() {
 //    return 'home';
 //});
-$router->get('/about', function() {
-    return 'about';
-});
-
+//$router->get('/about', function() {
+//    return 'about';
+//});
+$router->get('/about', \App\Controller::class . '@about');
 $router->get('/',\App\Controller::class . '@index');
 
 $application = new Application($router);
