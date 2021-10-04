@@ -25,7 +25,10 @@ class View implements Renderable
 
     public function render()
     {
+//        echo '<br>';
         extract($this->data);
+//        echo 'view render 29 ';
+
         include $this->getIncludeTemplate($this->view);
         /*
          * метод должен выводить необходимый шаблон.
@@ -38,8 +41,10 @@ class View implements Renderable
 
     private function getIncludeTemplate($view)
     {
-
-        $template =
+        var_dump($view);
+        $file = VIEW_DIR . '/layout/' . str_ireplace('.', DIRECTORY_SEPARATOR, $view) . '.php';
+        return $file;
+        //$template =
         /*
          * метод должен сформировать абсолютный путь к файлу шаблона,
          * указанного в свойстве $view с использованием константы VIEW_DIR.

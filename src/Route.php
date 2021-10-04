@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\View\Renderable;
 use Closure;
 
 class Route
@@ -37,7 +38,7 @@ class Route
              $callback = [$object, $method];
         }
 
-        return $callback;
+        return call_user_func_array($callback,[]);
         /*
          * это внутренний метод маршрутизатора.
          * Он преобразует параметр $callback в выполняемую функцию,
@@ -64,7 +65,13 @@ class Route
 
     public function run()
     {
-        echo call_user_func_array($this->callback,[]);
+        //var_dump($this);
+        if ($this->callback instanceof Renderable) {
+            $this->callback->render();
+
+        } else {
+            echo $this->callback;
+        }
 
         /*
          * этот метод запускает обработчик маршрута и возвращает результат его работы.
