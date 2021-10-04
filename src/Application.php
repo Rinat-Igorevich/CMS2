@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\View\Renderable;
+
 class Application
 {
     /*
@@ -21,7 +23,16 @@ class Application
          * — этот метод выводит результат работы метода dispatch() маршрутизатора,
          *  передавая ему в качестве параметра URL-адрес текущей страницы и HTTP-метод запроса.
          */
-        $this->router->dispatch($url, $method);
+        $dispatchedRoute = $this->router->dispatch($url, $method);
+
+        if ($dispatchedRoute instanceof Renderable) {
+
+            $dispatchedRoute->render();
+
+        } else {
+
+            echo $dispatchedRoute;
+        }
 
     }
 

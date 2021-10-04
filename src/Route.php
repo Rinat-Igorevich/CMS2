@@ -60,18 +60,21 @@ class Route
         /*
          * этот метод проверяет, подходит ли текущий маршрут текущему запросу.
          */
+
         return $this->getPath() == $uri && $this->method == $method;
     }
 
     public function run()
     {
         //var_dump($this);
-        if ($this->callback instanceof Renderable) {
-            $this->callback->render();
+        return $this->callback;
 
-        } else {
-            echo $this->callback;
-        }
+//        if ($this->callback instanceof Renderable) {
+//            $this->callback->render();
+//
+//        } else {
+//            echo $this->callback;
+//        }
 
         /*
          * этот метод запускает обработчик маршрута и возвращает результат его работы.

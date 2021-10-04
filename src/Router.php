@@ -18,6 +18,7 @@ class Router
                 return $route->run();
             }
         }
+        return null;
 
         /*
          * этот метод ищет подходящий маршрут,

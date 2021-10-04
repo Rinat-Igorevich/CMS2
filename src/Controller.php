@@ -8,7 +8,7 @@ class Controller
 {
     public function index()
     {
-        return new View('personal.messages.show', ['title' => 'Index Page']);
+        return new View('homepage', ['title' => 'Index Page']);
     }
 
 }

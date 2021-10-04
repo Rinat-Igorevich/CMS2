@@ -25,9 +25,8 @@ class View implements Renderable
 
     public function render()
     {
-//        echo '<br>';
+
         extract($this->data);
-//        echo 'view render 29 ';
 
         include $this->getIncludeTemplate($this->view);
         /*
@@ -41,9 +40,11 @@ class View implements Renderable
 
     private function getIncludeTemplate($view)
     {
-        var_dump($view);
+        //var_dump($view);
         $file = VIEW_DIR . '/layout/' . str_ireplace('.', DIRECTORY_SEPARATOR, $view) . '.php';
-        return $file;
+        if (file_exists($file)){
+            return $file;
+        }
         //$template =
         /*
          * метод должен сформировать абсолютный путь к файлу шаблона,
