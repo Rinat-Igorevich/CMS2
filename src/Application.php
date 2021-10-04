@@ -27,6 +27,10 @@ class Application
          * — этот метод выводит результат работы метода dispatch() маршрутизатора,
          *  передавая ему в качестве параметра URL-адрес текущей страницы и HTTP-метод запроса.
          */
+
+        $config = Config::getConfig();
+        var_dump($config->get('db.mysql.host'));
+
         try {
             $dispatchedRoute = $this->router->dispatch($url, $method);
 

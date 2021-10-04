@@ -2,6 +2,7 @@
 
 define("APP_DIR", $_SERVER['DOCUMENT_ROOT']);
 const VIEW_DIR = APP_DIR . '/view';
+require 'helpers.php';
 
 //require APP_DIR . '/src/Router.php';
 //require APP_DIR . '/src/Application.php';
