@@ -2,8 +2,9 @@
 
 define("APP_DIR", $_SERVER['DOCUMENT_ROOT']);
 const VIEW_DIR = APP_DIR . '/view';
-require __DIR__ . '/vendor/autoload.php';
 require 'helpers.php';
+var_dump(__DIR__ . '/vendor/autoload.php');
+require __DIR__ . '/vendor/autoload.php';
 
 //require APP_DIR . '/src/Router.php';
 //require APP_DIR . '/src/Application.php';
