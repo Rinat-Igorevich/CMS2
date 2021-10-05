@@ -28,4 +28,3 @@ $posts = Post::all();
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/view/layout/footer.php';
-

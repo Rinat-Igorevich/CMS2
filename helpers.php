@@ -22,3 +22,22 @@ function array_get($array, $key, $default = null)
     }
     return $default;
 }
+/**
+ * Функция извлечения данных из url
+ * @param string $url - url-путь страницы
+ * @param string $pattern - заданный путь в Route
+ * @return array - массив парамметров для callback-функции
+ */
+function extractURLData(string $url, string $pattern): array
+{
+    $result = [];
+    $patternArr = explode('/', $pattern);
+    $urlArr = explode('/', $url);
+    foreach ($patternArr as $key => $param) {
+        if ($param === '*') {
+            $result[] = $urlArr[$key];
+        }
+    }
+
+    return $result;
+}

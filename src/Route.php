@@ -2,8 +2,8 @@
 
 namespace App;
 
-use App\View\Renderable;
 use Closure;
+use function helpers\extractURLData;
 
 class Route
 {
@@ -11,12 +11,6 @@ class Route
     private string $method;
     private $callback;
 
-    /*
-     * Этот класс представляет собой экземпляр маршрута.
-     * Его задача — хранить в себе параметры маршрута и
-     * уметь запускать код-обработчик выполнения текущего маршрута
-     * (выполнять контроллер, указанный в callback-функции)
-     */
     /**
      * @param string $path
      * @param string $method
@@ -29,7 +23,10 @@ class Route
         $this->callback = $this->prepareCallback($callback);
     }
 
-
+    /**
+     * @param $callback
+     * @return false|mixed
+     */
     private function prepareCallback($callback)
     {
          if (!($callback instanceof Closure)) {
@@ -38,47 +35,33 @@ class Route
              $callback = [$object, $method];
         }
 
-        return call_user_func_array($callback,[]);
-        /*
-         * это внутренний метод маршрутизатора.
-         * Он преобразует параметр $callback в выполняемую функцию,
-         * чтобы потом использовать её для выполнения маршрута.
-         */
+        return $callback;
 
     }
 
+    /**
+     * @return string
+     */
     public function getPath(): string
     {
-        /*
-         * это метод-геттер. Он просто возвращает текущее значение свойства $path.
-         */
         return $this->path;
     }
 
+    /**
+     * @param string $uri
+     * @param string $method
+     * @return bool
+     */
     public function match(string $uri, string $method): bool
     {
-        /*
-         * этот метод проверяет, подходит ли текущий маршрут текущему запросу.
-         */
-
-        return $this->getPath() == $uri && $this->method == $method;
+        return preg_match('/^' . str_replace(['*', '/'], ['\w+', '\/'], $this->getPath() ). '$/', $uri) && $this->method == $method;
     }
 
-    public function run()
+    /**
+     * @return false|mixed
+     */
+    public function run($url)
     {
-        //var_dump($this);
-        return $this->callback;
-
-//        if ($this->callback instanceof Renderable) {
-//            $this->callback->render();
-//
-//        } else {
-//            echo $this->callback;
-//        }
-
-        /*
-         * этот метод запускает обработчик маршрута и возвращает результат его работы.
-         */
+        return call_user_func_array($this->callback, extractURLData($url,$this->getPath()) );
     }
-
 }

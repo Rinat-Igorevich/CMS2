@@ -17,7 +17,7 @@ class Router
 
             if ($route->match($url, $method)) {
 
-                return $route->run();
+                return $route->run($url);
             }
         }
         throw new NotFoundException;
