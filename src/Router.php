@@ -42,7 +42,7 @@ class Router
 
     public function post(string $path, array $callback)
     {
-        $this->addRoute('post', $path, $callback);
+        $this->addRoute('posts', $path, $callback);
     }
 
 }

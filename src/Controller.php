@@ -16,5 +16,10 @@ class Controller
         return new View('about', ['title' => 'О нас']);
     }
 
+    public function posts()
+    {
+        return new View('posts.posts', ['title' => 'Posts']);
+    }
+
 
 }

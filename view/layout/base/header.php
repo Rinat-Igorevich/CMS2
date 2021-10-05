@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
     <title><?= $title?></title>
+
 </head>
 <header class="p-3 bg-dark text-white">
     <div class="container">
@@ -19,9 +20,7 @@
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                <li><a href="/posts" class="nav-link px-2 text-white">Posts</a></li>
                 <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
             </ul>
 
@@ -37,3 +36,4 @@
     </div>
 </header>
 <body>
+<div class="wrapper">

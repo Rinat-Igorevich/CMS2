@@ -7,6 +7,7 @@ use App\Exception\HttpException;
 use App\View\Renderable;
 use App\View\View;
 use Exception;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Application
 {
@@ -19,6 +20,26 @@ class Application
     public function __construct(Router $router)
     {
         $this->router = $router;
+        $this->initialize();
+    }
+
+    private function initialize()
+    {
+        $capsule = new Capsule;
+
+        $capsule->addConnection([
+            'driver' => 'mysql',
+            'host' => 'localhost:3307',
+            'database' => 'cms',
+            'username' => 'root',
+            'password' => 'root',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+        ]);
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
+
     }
 
     public function run(string $url, string $method)

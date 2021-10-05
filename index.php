@@ -10,14 +10,9 @@ require_once 'bootstrap.php';
 
 $router = new Router();
 
-//$router->get('/', function() {
-//    return 'home';
-//});
-//$router->get('/about', function() {
-//    return 'about';
-//});
-$router->get('/about', \App\Controller::class . '@about');
 $router->get('/',\App\Controller::class . '@index');
+$router->get('/about', \App\Controller::class . '@about');
+$router->get('/posts', \App\Controller::class . '@posts');
 
 $application = new Application($router);
 

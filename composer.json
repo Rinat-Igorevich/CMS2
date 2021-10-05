@@ -1,14 +1,29 @@
 {
-    "name": "f/f",
-    "require": {},
+    "name": "rinat-skillbox/cms2",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Rinat",
+            "email": "rinat.igorevich@yandex.ru"
+        }
+    ],
+    "require": {
+        "illuminate/database": "^8.60"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "src",
-            "App\\view\\": "view"
+            "App\\view\\": "view",
+            "App\\Exception\\": "exception",
+            "App\\Models\\": "src/Model"
+
         },
         "classmap": [
             "src/",
-            "view/"
+            "view/",
+            "exception",
+            "src/Model"
         ]
     }
 }
