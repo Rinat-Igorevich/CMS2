@@ -40,9 +40,9 @@ class Router
 
     }
 
-    public function post(string $path, array $callback)
+    public function post(string $path, $callback)
     {
-        $this->addRoute('posts', $path, $callback);
+        $this->addRoute('post', $path, $callback);
     }
 
 }

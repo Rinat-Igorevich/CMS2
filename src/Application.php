@@ -4,6 +4,7 @@ namespace App;
 
 use App\Exception\ApplicationException;
 use App\Exception\HttpException;
+use App\Model\User;
 use App\View\Renderable;
 use App\View\View;
 use Exception;
@@ -51,6 +52,9 @@ class Application
 
         $config = Config::getConfig();
 //        var_dump($config->get('db.mysql.host'));
+
+
+
 
         try {
             $dispatchedRoute = $this->router->dispatch($url, $method);

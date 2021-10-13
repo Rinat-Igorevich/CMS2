@@ -2,6 +2,7 @@
 
 use App\Application;
 use App\Controller;
+use App\RegistrationController;
 use App\Router;
 use App\StaticPageController;
 
@@ -15,7 +16,16 @@ $router = new Router();
 $router->get('/', Controller::class . '@index');
 $router->get('/about', Controller::class . '@about');
 $router->get('/posts', Controller::class . '@posts');
-$router->get('/test/*/test2/*', StaticPageController::class.'@test');
+$router->get('/posts/*/test2/*', StaticPageController::class.'@test');
+$router->get('/posts/*', StaticPageController::class.'@show');
+$router->get('/rules', StaticPageController::class.'@rules');
+$router->get('/authorization', Controller::class . '@authorization');
+$router->get('/profile', Controller::class . '@profile');
+$router->get('/registration', Controller::class . '@registration');
+
+$router->post('/authorization/register', RegistrationController::class . '@register');
+
+//var_dump($router);
 
 $application = new Application($router);
 

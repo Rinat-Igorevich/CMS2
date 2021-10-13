@@ -1,4 +1,6 @@
 <?php
 include 'base/header.php';
+//include 'sidebar/sidebar.php';
 ?>
-<div class="container">
+
+<?php
