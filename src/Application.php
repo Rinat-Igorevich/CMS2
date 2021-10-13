@@ -52,6 +52,7 @@ class Application
 
         $config = Config::getConfig();
 //        var_dump($config->get('db.mysql.host'));
+//        var_dump(User::where('email', 'agrispo33@gmail.com')->exists());
 
 
 

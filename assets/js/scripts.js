@@ -9,37 +9,71 @@ $('#accept_rules').on('change', function() {
 let registration = {
     ajaxMethod: 'POST',
 
+    validatePassword: function () {
+
+        let password = $('#password').val()
+        let confirmPassword = $('#confirm-password').val()
+
+        if (password !== '') {
+            if (password === confirmPassword) {
+
+                return true
+
+            } else {
+
+                alert('Введенные пароли не совпадают')
+                return false
+
+            }
+
+        } else {
+
+            alert('пароль не может быть пустым')
+            return false
+        }
+    },
+
     submit: function () {
 
-        let formData = new FormData();
-        console.log($('#firstName').val())
-        console.log($('#email').val())
-        console.log($('#password').val())
-        console.log($('#password').val())
-        // this.event.stopPropagation()
-        formData.append('newUserName', $('#firstName').val())
-        formData.append('newUserEmail', $('#email').val())
-        formData.append('newUserPassword', $('#password').val())
+        if (this.validatePassword()) {
+            let formData = new FormData();
 
-        $.ajax({
-            url: '/authorization/register',
-            type: this.ajaxMethod,
-            data: formData,
-            cache: false,
-            processData: false,
-            contentType: false,
-            beforeSend: function () {
-                console.log(formData)
-            },
-            success: function (result) {
-                console.log(result);
-            },
-            error: function(jqXHR, status, errorThrown) {
-                console.log('ОШИБКА AJAX запроса: ' + status, jqXHR);
-            }
-        });
+            formData.append('newUserName', $('#firstName').val())
+            formData.append('newUserEmail', $('#email').val())
+            formData.append('newUserPassword', $('#password').val())
+
+            $.ajax({
+                url: '/authorization/register',
+                type: this.ajaxMethod,
+                data: formData,
+                dataType : 'json',
+                cache: false,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    console.log(formData)
+                },
+                success: function (respond) {
+                    if (typeof respond.error === 'undefined'){
+
+                        console.log('пользователь зарегистрирован')
+                        console.log(respond)
+
+                    } else {
+
+                        alert(respond.error)
+
+                    }
+                },
+                error: function(jqXHR, status, errorThrown) {
+                    console.log('ОШИБКА AJAX запроса: ' + status, jqXHR);
+                }
+            });
+        }
+
+
     }
 
 };
 
-console.log(registration)
+// console.log(registration)

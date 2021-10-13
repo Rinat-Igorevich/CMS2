@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "illuminate/database": "^8.60"
+        "illuminate/database": "^8.60",
+      "ext-json": "*"
     },
     "autoload": {
         "psr-4": {

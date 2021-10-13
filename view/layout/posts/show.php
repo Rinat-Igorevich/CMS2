@@ -65,7 +65,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/view/layout/header.php';
             <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
         </article>
 
-
         <nav class="blog-pagination" aria-label="Pagination">
             <a class="btn btn-outline-primary" href="#">Older</a>
             <a class="btn btn-outline-secondary disabled">Newer</a>
