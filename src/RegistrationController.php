@@ -16,7 +16,7 @@ class RegistrationController
             User::create([
                 'name' => $_POST['newUserName'],
                 'email' => $_POST['newUserEmail'],
-                'password' => md5($_POST['newUserPassword']),
+                'password' => password_hash($_POST['newUserPassword'], PASSWORD_DEFAULT),
             ]);
 
             die (json_encode(['result' => 'регистрация прошла успешно']));

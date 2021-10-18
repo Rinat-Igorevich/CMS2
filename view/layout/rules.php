@@ -2,7 +2,6 @@
 include 'header.php'
 ?>
     <div class="container">
-
         <div>
             <h3><?= $title?></h3>
             <hr>

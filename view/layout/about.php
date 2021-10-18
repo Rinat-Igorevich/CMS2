@@ -4,10 +4,10 @@ include 'header.php'
 
 ?>
 
-<div class="container">
+<!--<div class="container">-->
     <h3><?= $title?></h3>
     <a href="/">На главную</a>
-</div>
+<!--</div>-->
 
 <?php
 

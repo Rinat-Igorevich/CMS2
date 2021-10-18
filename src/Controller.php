@@ -21,9 +21,9 @@ class Controller
         return new View('posts.posts', ['title' => 'Posts']);
     }
 
-    public function authorization()
+    public function login()
     {
-        return new View('authorization.authorization', ['title' => 'authorization']);
+        return new View('authorization.login', ['title' => 'login']);
     }
 
     public function registration()
@@ -32,7 +32,12 @@ class Controller
     }
     public function profile()
     {
-        return new View('profile.profile', ['title' => 'profile']);
+        if (!isset($_SESSION['isAuth']) || $_SESSION['isAuth'] == false) {
+            header('Location: /login/');
+            exit;
+        } else {
+            return new View('profile.profile', ['title' => 'Личный кабинет']);
+        }
     }
 
 

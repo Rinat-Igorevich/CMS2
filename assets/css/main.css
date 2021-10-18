@@ -1,0 +1,13 @@
+.container {
+
+}
+.profile_wrapper {
+    width: 600px;
+    display: block;
+    align-items: center;
+}
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}

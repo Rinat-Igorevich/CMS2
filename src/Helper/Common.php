@@ -8,14 +8,12 @@ class Common
 {
     public static function isUserExist($email)
     {
-            return User::where('email', $email)->exists();
-
+        return User::where('email', $email)->exists();
     }
 
-    public static function validateRegistrationData() {
-
-      return self::isUserExist($_POST['newUserEmail']) ? 'Пользователь с таким email уже зарегистрирован' : null;
-
+    public static function validateRegistrationData()
+    {
+        return self::isUserExist($_POST['newUserEmail']) ? 'Пользователь с таким email уже зарегистрирован' : null;
     }
 
 }

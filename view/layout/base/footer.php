@@ -12,13 +12,14 @@
     <div class="container">
         <footer class="footer py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="/posts" class="nav-link px-2 text-muted">Posts</a></li>
-                <li class="nav-item"><a href="/about" class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Главная</a></li>
+                <li class="nav-item"><a href="/rules" class="nav-link px-2 text-muted">Правила</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link px-2 text-muted">о нас</a></li>
             </ul>
             <p class="text-center text-muted">&copy; 2021 </p>
         </footer>
     </div>
+
 </div>
 </body>
 </html>
